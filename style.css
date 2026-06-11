@@ -1,0 +1,402 @@
+/* ==========================================
+   RESET
+========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #d8d8d8;
+  overflow: hidden;
+}
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #eeeeee, #cfcfcf);
+}
+
+.hero::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 190px;
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.35)
+  );
+  pointer-events: none;
+}
+
+/* ==========================================
+   3D SCENE
+========================================== */
+.scene {
+  position: relative;
+  width: 700px;
+  height: 700px;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.circle-track {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ==========================================
+   CARDS
+========================================== */
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 430px;
+  height: 250px;
+  padding: 28px;
+  color: white;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 35px 55px rgba(0, 0, 0, 0.28);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Card Colors */
+.card-1,
+.card-5 {
+  background: #ff3b25;
+}
+
+.card-2,
+.card-4 {
+  background: #111;
+}
+
+.card-3,
+.card-6 {
+  background: #f5f5f5;
+  color: #111;
+}
+
+/* Card Positions */
+.card-1 {
+  transform: translate(-50%, -50%) rotateX(0deg) translateZ(360px);
+}
+
+.card-2 {
+  transform: translate(-50%, -50%) rotateX(60deg) translateZ(360px);
+}
+
+.card-3 {
+  transform: translate(-50%, -50%) rotateX(120deg) translateZ(360px);
+}
+
+.card-4 {
+  transform: translate(-50%, -50%) rotateX(180deg) translateZ(360px);
+}
+
+.card-5 {
+  transform: translate(-50%, -50%) rotateX(240deg) translateZ(360px);
+}
+
+.card-6 {
+  transform: translate(-50%, -50%) rotateX(300deg) translateZ(360px);
+}
+
+/* ==========================================
+   CARD TYPOGRAPHY
+========================================== */
+.card span {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.card h1 {
+  margin-top: 60px;
+  font-size: 68px;
+  line-height: 1;
+}
+
+.card-1 h1 {
+  position: absolute;
+  bottom: 20px;
+  right: 35px;
+  font-size: 170px;
+}
+
+.card h2 {
+  margin-top: 35px;
+  font-size: 38px;
+  line-height: 0.95;
+}
+
+.card h3 {
+  margin-top: 25px;
+  font-size: 48px;
+}
+
+.card p {
+  margin-top: 25px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.line {
+  margin-top: 25px;
+  padding: 22px 0;
+
+  font-size: 22px;
+  font-weight: bold;
+
+  border-top: 1px solid #ccc;
+}
+
+/* ==========================================
+   BOTTOM BAR
+========================================== */
+.bottom-text {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  width: 80%;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateX(-50%);
+}
+
+.email-copy {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.email-text {
+  color: #fff;
+  white-space: nowrap;
+  letter-spacing: 2px;
+}
+
+.deck-text {
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+.btn-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 13px;
+  border: none;
+  outline: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.btn-pill:hover {
+  background: #eeeeee;
+}
+
+/* ==========================================
+   TOAST
+========================================== */
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 82px;
+  z-index: 200;
+
+  padding: 10px 20px;
+
+  color: var(--surface);
+  background: var(--text-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+
+  border-radius: 100px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateX(-50%) translateY(20px);
+  transition: all 0.3s ease;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================
+   TABLET & MOBILE
+========================================== */
+@media (max-width: 768px) {
+  body {
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  .hero {
+    height: 100dvh;
+  }
+
+  .scene {
+    width: 100%;
+    height: 620px;
+    perspective: 1000px;
+    transform: scale(0.9);
+  }
+
+  .card {
+    width: 310px;
+    height: 190px;
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .card-1 {
+    transform: translate(-50%, -50%) rotateX(0deg) translateZ(250px);
+  }
+
+  .card-2 {
+    transform: translate(-50%, -50%) rotateX(60deg) translateZ(250px);
+  }
+
+  .card-3 {
+    transform: translate(-50%, -50%) rotateX(120deg) translateZ(250px);
+  }
+
+  .card-4 {
+    transform: translate(-50%, -50%) rotateX(180deg) translateZ(250px);
+  }
+
+  .card-5 {
+    transform: translate(-50%, -50%) rotateX(240deg) translateZ(250px);
+  }
+
+  .card-6 {
+    transform: translate(-50%, -50%) rotateX(300deg) translateZ(250px);
+  }
+
+  .card span {
+    font-size: 11px;
+  }
+
+  .card h1 {
+    font-size: 52px;
+  }
+
+  .card-1 h1 {
+    right: 25px;
+    font-size: 110px;
+  }
+
+  .card h2 {
+    font-size: 27px;
+  }
+
+  .card h3 {
+    font-size: 32px;
+  }
+
+  .card p {
+    font-size: 12px;
+  }
+
+  .line {
+    padding: 15px 0;
+    font-size: 17px;
+  }
+
+  .bottom-text {
+    width: 90%;
+    bottom: 18px;
+  }
+
+  .email-copy {
+    gap: 8px;
+    padding: 7px 8px 7px 14px;
+    font-size: 11px;
+  }
+
+  .btn-pill {
+    padding: 7px 11px;
+    font-size: 11px;
+  }
+
+  .deck-text {
+    font-size: 11px;
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+@media (max-width: 430px) {
+  .scene {
+    height: 560px;
+    transform: scale(0.82);
+  }
+
+  .card {
+    width: 300px;
+    height: 185px;
+  }
+
+  .bottom-text {
+    width: 92%;
+    gap: 10px;
+  }
+
+  .email-copy {
+    max-width: 72%;
+  }
+
+  .email-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .deck-text {
+    white-space: nowrap;
+  }
+}

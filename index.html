@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scroll Controlled Rotating Cards</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Toast notification -->
+<div id="toast">Copied to clipboard ✓</div>
+
+  <section class="hero">
+    <div class="scene">
+      <div class="circle-track" id="circleTrack">
+
+        <div class="card card-1">
+          <span>Yonjan Shrestha</span>
+          <h1>29</h1>
+        </div>
+
+        <div class="card card-2">
+          <span>PROCESS</span>
+          <h2>DISCOVER<br>DIRECTION<br>DESIGN</h2>
+        </div>
+
+        <div class="card card-3">
+          <span>OPPORTUNITY</span>
+          <div class="line">GAP</div>
+          <div class="line">SHIFT</div>
+        </div>
+
+        <div class="card card-4">
+          <span>METRICS</span>
+          <h3>2.1M</h3>
+          <p>NEW YORK 33%<br>LOS ANGELES 22%<br>LONDON 7%</p>
+        </div>
+
+        <div class="card card-5">
+          <h1>Kkohotmy0</h1>
+        </div>
+
+        <div class="card card-6">
+          <span>DATA</span>
+          <h3>00000</h3>
+          <h3>00000</h3>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bottom-text">
+      <div class="email-copy">
+        <span class="email-text">info@yonjanshrestha.com.np</span>
+
+        <button class="btn-pill" onclick="copyEmail()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="9" y="9" width="13" height="13" rx="2"/>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+          </svg>
+          Copy
+        </button>
+      </div>
+
+      <span class="deck-text">Hello, World!</span>
+    </div>
+  </section>
+
+  <script>
+    // Copy email
+function copyEmail() {
+  const email = 'info@yonjanshrestha.com.np';
+
+  navigator.clipboard?.writeText(email).catch(() => {
+    const fallback = document.createElement('textarea');
+    fallback.value = email;
+    document.body.appendChild(fallback);
+    fallback.select();
+    document.execCommand('copy');
+    fallback.remove();
+  });
+
+  const toast = document.getElementById('toast');
+
+  if (toast) {
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  }
+}
+
+window.copyEmail = copyEmail;
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
